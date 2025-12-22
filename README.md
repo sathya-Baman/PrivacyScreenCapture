@@ -1,56 +1,75 @@
-📸 PrivacyScreenCapture
-PrivacyScreenCapture is a lightweight Swift Package that helps you detect screenshots and display a customizable privacy warning overlay in iOS apps.
-It is designed to be:
-✅ Modular
-✅ SwiftUI-friendly
-✅ UIKit compatible
-✅ iOS 13+ supported
-✅ Easy to integrate via Swift Package Manager
-✨ Features
-Detect screenshots in your main app
-Display a full-screen privacy warning popup
-Fully customizable UI (colors, title, description)
-SwiftUI-based UI presented via UIKit
-Callback to notify the main app when the popup is dismissed
-Supports images and asset catalogs via Bundle.module
-📱 Use Case
-This module is useful when your app handles sensitive content, such as:
-Banking or finance apps
-Healthcare apps
-Enterprise/internal apps
-DRM-protected or confidential data
-When a screenshot is taken, you can:
-Detect it in the main app
-Show a privacy warning popup
-React when the user dismisses the popup
-📦 Installation
-Swift Package Manager (Local or Remote)
-Local Package
-In Xcode:
-File → Add Packages…
-Select Add Local…
-Choose the PrivacyScreenCapture folder
-Remote Package
-.package(url: "https://github.com/your-org/PrivacyScreenCapture.git", from: "1.0.0")
-Then add it to your target dependencies.
-🧱 Architecture Overview
-Main App
- ├─ Detects screenshot (UIApplication notification)
- ├─ Configures UI content
- ├─ Presents popup
- └─ Receives dismiss callback
+# 📸 PrivacyScreenCapture
 
-PrivacyScreenCapture (SPM)
- ├─ PrivacyScreenCaptureConfig
- ├─ PrivacyScreenCapturePresenter
- ├─ PrivacyScreenCaptureView (SwiftUI)
- └─ Resource Bundle (Assets.xcassets)
-🔒 Screenshot detection is intentionally kept outside the module to give the app full control.
-🛠️ Integration Guide
-1️⃣ Import the Module
+**PrivacyScreenCapture** is a lightweight Swift Package that helps you **detect screenshots and display a customizable privacy warning overlay** in iOS apps.
+
+It is designed to be:
+
+- ✅ Modular
+- ✅ SwiftUI-friendly
+- ✅ UIKit compatible
+- ✅ iOS 13+ supported
+- ✅ Easy to integrate via Swift Package Manager
+
+---
+
+## ✨ Features
+
+- Detect screenshots in your main app
+- Display a full-screen privacy warning popup
+- Fully customizable UI (colors, title, description)
+- SwiftUI-based UI presented via UIKit
+- Callback to notify the main app when the popup is dismissed
+- Supports images and asset catalogs via `Bundle.module`
+
+---
+
+## 📱 Use Case
+
+This module is useful when your app handles **sensitive content**, such as:
+
+- Banking or finance apps
+- Healthcare apps
+- Enterprise or internal apps
+- DRM-protected or confidential data
+
+When a screenshot is taken, you can:
+
+1. Detect it in the main app
+2. Show a privacy warning popup
+3. React when the user dismisses the popup
+
+---
+
+## 📦 Installation
+
+### Swift Package Manager
+
+#### Local Package
+
+1. Open Xcode
+2. Go to **File → Add Packages…**
+3. Select **Add Local…**
+4. Choose the `PrivacyScreenCapture` folder
+
+#### Remote Package
+
+```swift
+.package(
+    url: "https://github.com/your-org/PrivacyScreenCapture.git",
+    from: "1.0.0"
+)
+
+## 🛠️ Integration Guide
+
+#### 1️⃣ Import the Module
+
+```swift
 import PrivacyScreenCapture
-2️⃣ Detect Screenshot in Main App
-Screenshot detection must be done in the main app, not inside the module.
+
+#### 2️⃣ Detect Screenshot in Main App
+Screenshot detection must be implemented in the main application:
+
+```swift
 NotificationCenter.default.addObserver(
     forName: UIApplication.userDidTakeScreenshotNotification,
     object: nil,
@@ -58,7 +77,10 @@ NotificationCenter.default.addObserver(
 ) { _ in
     showScreenshotPopup()
 }
-3️⃣ Present the Privacy Popup
+
+#### 3️⃣ Present the Privacy Popup
+
+```swift
 private func showScreenshotPopup() {
     guard let rootVC = UIApplication.shared.topViewController() else {
         print("❌ Could not find root view controller")
@@ -70,7 +92,6 @@ private func showScreenshotPopup() {
         title: "Screenshot Detected",
         description: "Taking screenshots of this content is not allowed.",
         onDismiss: {
-            // Callback from module
             PrivacyScreenCapturePresenter.dismiss()
             print("❌ Screenshot popup closed by user")
         }
@@ -81,74 +102,31 @@ private func showScreenshotPopup() {
         config: config
     )
 }
-🧩 Configuration API
+```
+
+## 🧩 Configuration API
 PrivacyScreenCaptureConfig
+
+```swift
 public struct PrivacyScreenCaptureConfig {
     public let backgroundColor: Color
     public let title: String
     public let description: String
     public let onDismiss: () -> Void
 }
-Property    Description
-backgroundColor Full-screen overlay color
-title   Main warning title
-description Detailed message
-onDismiss   Callback when user taps Close
-🖼️ Assets Support
-The module supports images using Swift Package resources.
-Asset Setup
-Sources/
- └─ PrivacyScreenCapture/
-    └─ Resources/
-       └─ Assets.xcassets
-          └─ screenshot_warning.imageset
-Usage in SwiftUI
-Image("screenshot_warning", bundle: .module)
-📱 Demo App Example
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "hand.raised.circle.fill")
-                .font(.system(size: 100))
-                .foregroundStyle(.tint)
-                .tint(.red)
+```
 
-            Text("This module helps to show a privacy screen when a screenshot is taken.")
-                .padding()
+## ✅ iOS Compatibility
+#### Platform	Supported
+#### iOS 13+	✅
+#### SwiftUI	✅
+#### UIKit	✅
 
-            Button("Show Screenshot Popup") {
-                showScreenshotPopup()
-            }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
 
-            Spacer()
-        }
-        .padding()
-    }
-}
-✅ iOS Compatibility
-iOS Version Supported
-iOS 13+ ✅
-SwiftUI ✅
-UIKit   ✅
-🔐 Design Decisions
-Screenshot detection lives in the main app
-UI lives in the module
-Presentation handled via UIHostingController
-Dismiss logic controlled by the app
-No private APIs used
-🚀 Future Enhancements
-Screen recording detection
-Auto-dismiss timers
-Accessibility improvements
-Localization support
-Dark/Light theme presets
-📄 License
+## 📄 License
 MIT License
-Feel free to use, modify, and distribute.
-👨‍💻 Author
+
+
+## 👨‍💻 Author
 Created by Baman
 Built with ❤️ using SwiftUI & Swift Package Manager
