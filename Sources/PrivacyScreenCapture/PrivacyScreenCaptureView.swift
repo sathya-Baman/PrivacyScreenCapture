@@ -23,7 +23,7 @@ public struct PrivacyScreenCaptureView: View {
                 .edgesIgnoringSafeArea(.all)
 
             VStack(spacing: 20) {
-                Image("warning_red", bundle: .module)
+                Image("warnig", bundle: .module)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 80, height: 80)
