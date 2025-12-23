@@ -39,16 +39,6 @@
 			path = PrivacyScreenCaptureDemo;
 			sourceTree = "<group>";
 		};
-		E159D77B2EF939A2007F4574 /* PrivacyScreenCaptureDemoTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PrivacyScreenCaptureDemoTests;
-			sourceTree = "<group>";
-		};
-		E159D7852EF939A2007F4574 /* PrivacyScreenCaptureDemoUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PrivacyScreenCaptureDemoUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				E159D76D2EF939A0007F4574 /* PrivacyScreenCaptureDemo */,
-				E159D77B2EF939A2007F4574 /* PrivacyScreenCaptureDemoTests */,
-				E159D7852EF939A2007F4574 /* PrivacyScreenCaptureDemoUITests */,
 				E159D76C2EF939A0007F4574 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -136,9 +124,6 @@
 			dependencies = (
 				E159D77A2EF939A2007F4574 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				E159D77B2EF939A2007F4574 /* PrivacyScreenCaptureDemoTests */,
-			);
 			name = PrivacyScreenCaptureDemoTests;
 			packageProductDependencies = (
 			);
@@ -158,9 +143,6 @@
 			);
 			dependencies = (
 				E159D7842EF939A2007F4574 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				E159D7852EF939A2007F4574 /* PrivacyScreenCaptureDemoUITests */,
 			);
 			name = PrivacyScreenCaptureDemoUITests;
 			packageProductDependencies = (
@@ -202,7 +184,7 @@
 			mainGroup = E159D7622EF939A0007F4574;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				E159D7B02EF93ADB007F4574 /* XCLocalSwiftPackageReference "../PrivacyScreenCapture" */,
+				E163B3E12EFA4803002A51E1 /* XCLocalSwiftPackageReference "../../PrivacyScreenCapture" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E159D76C2EF939A0007F4574 /* Products */;
@@ -589,9 +571,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		E159D7B02EF93ADB007F4574 /* XCLocalSwiftPackageReference "../PrivacyScreenCapture" */ = {
+		E163B3E12EFA4803002A51E1 /* XCLocalSwiftPackageReference "../../PrivacyScreenCapture" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../PrivacyScreenCapture;
+			relativePath = ../../PrivacyScreenCapture;
 		};
 /* End XCLocalSwiftPackageReference section */
 
