@@ -122,6 +122,9 @@ public struct PrivacyScreenCaptureConfig {
 #### SwiftUI	✅
 #### UIKit	✅
 
+## Demo
+<img width="300" height="600" alt="Simulator Screenshot - iPhone 17 Pro - 2025-12-23 at 11 38 41" src="https://github.com/user-attachments/assets/fb6728b3-4605-4a2a-8f70-6497a40ae13b" />
+
 
 ## 📄 License
 MIT License
@@ -132,6 +135,4 @@ Created by Baman
 Built with ❤️ using SwiftUI & Swift Package Manager
 
 
-## preview
-<img width="300" height="600" alt="Simulator Screenshot - iPhone 17 Pro - 2025-12-23 at 11 38 41" src="https://github.com/user-attachments/assets/fb6728b3-4605-4a2a-8f70-6497a40ae13b" />
 
